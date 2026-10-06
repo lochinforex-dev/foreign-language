@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>So'z kartalari</title>
+<style>
+:root{--bg:#f5f4fb;--card:#fff;--tx:#1b1a2e;--mu:#757391;--ac:#6d5df6;--ac2:#a45cf0;--bd:#e7e5f3;--ok:#22a06b;--no:#e5484d;--sh:0 8px 24px rgba(80,60,160,.10)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13121f;--card:#1e1c2f;--tx:#efeefa;--mu:#9c9ab8;--bd:#2d2a44;--ac:#8b7dff;--ok:#3cc58a;--no:#ff7378;--sh:0 8px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#13121f;--card:#1e1c2f;--tx:#efeefa;--mu:#9c9ab8;--bd:#2d2a44;--ac:#8b7dff;--ok:#3cc58a;--no:#ff7378;--sh:0 8px 24px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
+#app{max-width:520px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(96px + env(safe-area-inset-bottom,0px))}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--bd);background:var(--card);border-radius:14px;padding:12px 16px;transition:transform .12s,box-shadow .2s}
+button:active{transform:scale(.97)}
+button:disabled{opacity:.5}
+.p{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border:0;font-weight:600;box-shadow:0 6px 16px rgba(109,93,246,.35)}
+.gh{background:none;border:0;color:var(--mu)}
+input{width:100%;padding:13px 14px;border:1.5px solid var(--bd);border-radius:14px;background:var(--card);margin:6px 0 14px;outline:none}
+input:focus{border-color:var(--ac)}
+label{font-size:13px;color:var(--mu);font-weight:600}
+.mu{color:var(--mu);font-size:14px}
+/* onboarding */
+.hero{text-align:center;padding:36px 0 8px}
+.logo{width:76px;height:76px;margin:0 auto 16px;border-radius:24px;background:linear-gradient(135deg,var(--ac),var(--ac2));display:grid;place-items:center;font-size:38px;box-shadow:0 10px 28px rgba(109,93,246,.4)}
+.hero h1{font-size:26px;margin:0 0 6px;letter-spacing:-.5px}
+.hero p{margin:0;color:var(--mu);font-size:18px}
+.dots{display:flex;justify-content:center;gap:6px;margin:18px 0}
+.dots i{width:8px;height:8px;border-radius:8px;background:var(--bd);transition:.3s}.dots i.on{width:26px;background:var(--ac)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lg{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 6px;font-weight:600;box-shadow:var(--sh);border-radius:18px}
+.lg span{font-size:34px;line-height:1.1}
+.lg:hover{border-color:var(--ac)}
+/* header */
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.chip{display:flex;gap:8px;align-items:center;border-radius:30px;padding:8px 14px;font-weight:600;box-shadow:var(--sh)}
+.chip span{color:var(--mu);font-weight:500;font-size:14px}
+.ib{padding:9px 11px;border-radius:12px;margin-left:6px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.st{background:var(--card);border-radius:16px;padding:12px 6px;text-align:center;box-shadow:var(--sh)}
+.st b{display:block;font-size:22px}.st span{font-size:12px;color:var(--mu)}
+/* nav */
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:1px solid var(--bd)}
+nav button{flex:1;max-width:120px;border:0;background:none;padding:6px 4px;font-size:12px;color:var(--mu);display:flex;flex-direction:column;align-items:center;gap:2px;border-radius:12px}
+nav button i{font-style:normal;font-size:22px}
+nav button.on{color:var(--ac);background:color-mix(in srgb,var(--ac) 12%,transparent);font-weight:600}
+/* flash */
+.goal{margin-bottom:14px}.bar{height:8px;background:var(--bd);border-radius:8px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:8px;transition:width .4s}
+.scene{perspective:1100px;height:300px;cursor:pointer}
+.c3{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d}
+.c3.f{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border-radius:26px;box-shadow:var(--sh);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:10px;border:1px solid var(--bd)}
+.back{transform:rotateY(180deg);background:linear-gradient(160deg,var(--card),color-mix(in srgb,var(--ac) 10%,var(--card)))}
+.big{font-size:34px;font-weight:800;letter-spacing:-.5px;word-break:break-word}
+.fl{position:absolute;top:14px;left:18px;font-size:22px}
+.sp{position:absolute;top:10px;right:12px;padding:8px 10px;border-radius:12px}
+.ex{color:var(--mu);font-size:15px;max-width:90%}
+.acts{display:none;gap:10px;margin-top:14px}.acts.show{display:flex}.acts button{flex:1;padding:15px;font-weight:600}
+.no{color:var(--no)}
+.empty{text-align:center;background:var(--card);border-radius:24px;padding:36px 20px;box-shadow:var(--sh)}
+.empty .big{font-size:48px;margin-bottom:6px}
+/* panels */
+.panel{background:var(--card);border-radius:22px;padding:18px;box-shadow:var(--sh)}
+.opt{display:block;width:100%;text-align:left;margin-top:10px;padding:14px 16px;font-weight:500}
+.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.bad{background:var(--no);color:#fff;border-color:var(--no)}
+.item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 0;border-bottom:1px solid var(--bd)}
+.item small{display:block;color:var(--mu)}
+.item button{padding:6px 10px;border-radius:10px}
+.row{display:flex;gap:10px;margin-top:14px}.row button{flex:1}
+.dk{display:flex;align-items:center;gap:10px;padding:14px;margin-bottom:10px;border-radius:18px;background:var(--card);box-shadow:var(--sh);border:1.5px solid transparent;cursor:pointer}
+.dk.on{border-color:var(--ac)}.dk .t{flex:1;font-weight:600}.dk small{display:block;color:var(--mu);font-weight:400}
+#lock{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);align-items:center;justify-content:center;padding:20px}
+.lk{width:100%;max-width:340px;text-align:center}.lk h2{margin:8px 0 2px}
+.pd{display:flex;justify-content:center;gap:14px;margin:22px 0}.pd i{width:16px;height:16px;border-radius:50%;border:2px solid var(--ac);transition:.15s}.pd i.on{background:var(--ac)}
+.pd.shake{animation:sh .35s}@keyframes sh{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;justify-items:center}.kp button{width:76px;height:76px;border-radius:50%;font-size:26px;font-weight:600;box-shadow:var(--sh);padding:0}
+.av{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border:0;font-size:30px;font-weight:700;display:grid;place-items:center;margin:0 auto 12px;padding:0}
+.av.sm{width:42px;height:42px;font-size:18px;margin:0;box-shadow:0 4px 12px rgba(109,93,246,.4)}
+.sec{margin:20px 4px 8px;font-size:13px;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
+.rw{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--bd);cursor:pointer}.rw:last-child{border:0}
+.seg{display:flex;gap:8px;margin:8px 0}.seg button{flex:1;padding:9px}.seg button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.sw{width:50px;height:30px;border-radius:30px;padding:0;background:var(--bd);position:relative;border:0;flex:none}.sw::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}.sw.on{background:var(--ok)}.sw.on::after{left:23px}
+.dng{color:var(--no)}
+</style></head><body><div id="app"></div><div id="lock"></div>
+<script>
+const DAY=864e5,INT=[0,1,2,4,8,16];
+const LANGS=[['uz-UZ',"O'zbek",'🇺🇿'],['en-US','Ingliz','🇬🇧'],['ru-RU','Rus','🇷🇺'],['tr-TR','Turk','🇹🇷'],['de-DE','Nemis','🇩🇪'],['fr-FR','Fransuz','🇫🇷'],['es-ES','Ispan','🇪🇸'],['it-IT','Italyan','🇮🇹'],['ko-KR','Koreys','🇰🇷'],['ja-JP','Yapon','🇯🇵'],['zh-CN','Xitoy','🇨🇳'],['ar-SA','Arab','🇸🇦']];
+const L=c=>LANGS.find(l=>l[0]===c)||LANGS[1];
+let S={decks:[],cards:[],streak:{last:'',n:0},today:{d:'',n:0},cur:'',goal:10,name:'',lock:null};
+try{const r=JSON.parse(localStorage.getItem('fc1')||'null');if(r)S=Object.assign(S,r)}catch(e){}
+if(!S.cards.length)S.decks=S.decks.filter(d=>d.nat);
+if(S.decks.length&&!S.decks.find(d=>d.id===S.cur))S.cur=S.decks[0].id;
+const save=()=>{try{localStorage.setItem('fc1',JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const day=()=>new Date().toISOString().slice(0,10),yest=()=>new Date(Date.now()-DAY).toISOString().slice(0,10);
+let tab='study',onb=null,quiz=null;
+const cur=()=>S.decks.find(d=>d.id===S.cur)||S.decks[0];
+const nat=d=>d.nat||'uz-UZ';
+const cards=()=>S.cards.filter(c=>c.deck===cur().id);
+const due=()=>cards().filter(c=>c.due<=Date.now()).sort((a,b)=>a.box-b.box);
+function speak(t){try{const u=new SpeechSynthesisUtterance(t);u.lang=cur().lang;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function bump(){const d=day();if(S.today.d!==d)S.today={d,n:0};S.today.n++;
+ if(S.streak.last!==d){S.streak.n=S.streak.last===yest()?S.streak.n+1:1;S.streak.last=d}}
+function statsH(){const st=(S.streak.last===day()||S.streak.last===yest())?S.streak.n:0;
+ return `<div class="st"><b>${due().length}</b><span>takrorlash</span></div><div class="st"><b>${cards().filter(x=>x.box>=4).length}</b><span>o'rganildi</span></div><div class="st"><b>${st}🔥</b><span>kun ketma-ket</span></div>`}
+
+function render(){const a=$('app');
+ if(!S.decks.length&&!onb)onb={step:0};
+ if(onb)return onbV(a);
+ const d=cur();
+ a.innerHTML=`<header><button class="chip" id="pair">${L(nat(d))[2]} → ${L(d.lang)[2]} <span>${L(d.lang)[1]} tili</span></button><button class="av sm" id="pf">${S.name?esc(S.name[0].toUpperCase()):'👤'}</button></header>
+ <div class="stats" id="stats">${statsH()}</div><div id="view"></div>
+ <nav>${[['study','📖',"O'rganish"],['quiz','✅','Test'],['add','➕',"Qo'shish"],['list','🗂',"So'zlar"],['profile','👤','Profil']].map(a=>`<button class="${tab===a[0]?'on':''}" data-t="${a[0]}"><i>${a[1]}</i>${a[2]}</button>`).join('')}</nav>`;
+ $('pair').onclick=()=>{tab='decks';quiz=null;render()};
+ $('pf').onclick=()=>{tab='profile';quiz=null;render()};
+ document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;quiz=null;render()});
+ const v=$('view');({study:studyV,quiz:quizV,add:addV,list:listV,decks:decksV,profile:profileV}[tab]||studyV)(v)}
+
+function onbV(a){onb=onb||{step:0};const first=onb.step===0;
+ a.innerHTML=`<div class="hero"><div class="logo">📚</div><h1>${first?"Xush kelibsiz!":"Ajoyib tanlov!"}</h1><p>${first?"Qaysi tilni bilasiz?":"Qaysi tilni o'rganmoqchisiz?"}</p></div>
+ <div class="dots"><i class="${first?'on':''}"></i><i class="${first?'':'on'}"></i></div>
+ <div class="grid">${LANGS.filter(l=>first||l[0]!==onb.nat).map(l=>`<button class="lg" data-c="${l[0]}"><span>${l[2]}</span>${l[1]}</button>`).join('')}</div>
+ ${(!first||S.decks.length)?`<div style="text-align:center;margin-top:14px"><button class="gh" id="bk">← Orqaga</button></div>`:''}`;
+ a.querySelectorAll('.lg').forEach(b=>b.onclick=()=>{if(first){onb.nat=b.dataset.c;onb.step=1;onbV(a)}
+  else{const d={id:'d'+Date.now(),nat:onb.nat,lang:b.dataset.c};S.decks.push(d);S.cur=d.id;save();onb=null;tab='add';render()}});
+ const bk=$('bk');if(bk)bk.onclick=()=>{if(!first){onb.step=0;onbV(a)}else{onb=null;render()}}}
+
+function studyV(v){const c=due()[0],t=S.today.d===day()?S.today.n:0,pct=Math.min(100,Math.round(t/S.goal*100));
+ const goal=`<div class="goal"><div class="mu">Bugungi maqsad: <b>${t}/${S.goal}</b></div><div class="bar"><i style="width:${pct}%"></i></div></div>`;
+ if(!cards().length){v.innerHTML=goal+`<div class="empty"><div class="big">✨</div><b>Hali so'z yo'q</b><p class="mu">Birinchi so'zingizni qo'shing, qolganini AI o'zi qiladi.</p><button class="p" id="go">So'z qo'shish</button></div>`;$('go').onclick=()=>{tab='add';render()};return}
+ if(!c){v.innerHTML=goal+`<div class="empty"><div class="big">🎉</div><b>Hozircha hammasi takrorlandi!</b><p class="mu">Keyinroq qayting yoki Test rejimini sinang.</p></div>`;return}
+ v.innerHTML=goal+`<div class="scene" id="sc"><div class="c3" id="c3">
+ <div class="face"><span class="fl">${L(cur().lang)[2]}</span><button class="sp" id="sp">🔊</button><div class="big">${esc(c.w)}</div><div class="mu">Aylantirish uchun bosing</div></div>
+ <div class="face back"><span class="fl">${L(nat(cur()))[2]}</span><div class="big">${esc(c.t)}</div><div class="mu">${esc(c.w)}</div>${c.ex?`<div class="ex">${esc(c.ex)}</div>`:''}</div></div></div>
+ <div class="acts" id="ra"><button class="no" id="bad">Bilmadim</button><button class="p" id="good">Bildim</button></div>`;
+ $('sc').onclick=()=>{$('c3').classList.toggle('f');$('ra').classList.add('show')};
+ $('sp').onclick=e=>{e.stopPropagation();speak(c.w)};
+ $('bad').onclick=()=>rate(c,false);$('good').onclick=()=>rate(c,true)}
+function rate(c,ok){if(ok)c.box=Math.min(5,c.box+1);else{c.box=0;c.wrong=(c.wrong||0)+1}
+ c.due=ok?Date.now()+INT[c.box]*DAY:Date.now()+60000;bump();save();render()}
+
+function addV(v){const d=cur();
+ v.innerHTML=`<div class="panel"><label>${L(d.lang)[2]} So'z yoki ibora (istalgan tilda yozing)</label><input id="w" placeholder="Masalan: salom yoki hello" autocomplete="off">
+ <button class="p" id="ai" style="width:100%;margin-bottom:16px">✨ AI to'ldirsin</button>
+ <label>${L(nat(d))[2]} Tarjima</label><input id="t"><label>Misol gap</label><input id="ex">
+ <div class="mu" id="msg" style="margin-bottom:10px;min-height:20px"></div><button class="p" id="sv" style="width:100%">Saqlash</button></div>`;
+ const msg=t=>$('msg').textContent=t;
+ $('ai').onclick=async()=>{const w=$('w').value.trim();if(!w)return msg("Avval so'zni yozing");
+  const key=localStorage.getItem('gk');if(!key)return msg("Avval yuqoridagi 🔑 tugmasi bilan Gemini kalitini kiriting");
+  $('ai').disabled=true;msg("O'ylayapman...");
+  try{const N=L(nat(d))[1],T=L(d.lang)[1];
+   const prompt=`Foydalanuvchi ${N} tilini biladi va ${T} tilini o'rganyapti. U shu so'z yoki iborani yozdi: "${w}". U ${N} yoki ${T} tilida bo'lishi mumkin. Javobda: w = shu so'zning ${T} tilidagi varianti, t = ${N} tilidagi tarjimasi, ex = ${T} tilida qisqa misol gap va oxirida qavs ichida uning ${N} tilidagi tarjimasi. Faqat JSON qaytar: {"w":"...","t":"...","ex":"..."}`;
+   const resp=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':key},
+    body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{responseMimeType:'application/json',temperature:.3}})});
+   if(!resp.ok)throw new Error('api');
+   const j=await resp.json();const r=JSON.parse((j.candidates[0].content.parts[0].text||'{}').replace(/```json|```/g,'').trim());
+   $('w').value=r.w||w;$('t').value=r.t||'';$('ex').value=r.ex||'';msg("Tayyor. Tekshirib saqlang ✓")}
+  catch(e){msg("AI ishlamadi (kalitni tekshiring). Qo'lda to'ldirsangiz bo'ladi.")}
+  $('ai').disabled=false};
+ $('sv').onclick=()=>{const w=$('w').value.trim(),t=$('t').value.trim();if(!w||!t)return msg("So'z va tarjima kerak");
+  S.cards.push({id:'c'+Date.now(),deck:d.id,w,t,ex:$('ex').value.trim(),box:0,due:Date.now(),wrong:0});save();
+  ['w','t','ex'].forEach(i=>$(i).value='');msg("Qo'shildi ✓");$('stats').innerHTML=statsH();$('w').focus()}}
+
+function listV(v){const c=cards().slice().reverse();
+ v.innerHTML=`<input id="q" placeholder="🔎 Qidirish..."><div class="panel" style="padding:4px 16px"><div id="ls"></div></div>
+ <div class="row"><button id="ex">⬇ Eksport</button></div>`;
+ const draw=()=>{const q=$('q').value.toLowerCase();$('ls').innerHTML=c.filter(x=>(x.w+x.t).toLowerCase().includes(q)).map(x=>`<div class="item"><div><b>${esc(x.w)}</b> ${(x.wrong||0)>=2?'⚠️':''}<small>${esc(x.t)}</small></div><button data-d="${x.id}">✕</button></div>`).join('')||'<p class="mu">Hech narsa yo\'q</p>'};
+ draw();$('q').oninput=draw;
+ $('ls').onclick=e=>{const id=e.target.dataset.d;if(id){S.cards=S.cards.filter(x=>x.id!==id);save();render()}};
+ $('ex').onclick=()=>{const txt=c.map(x=>[x.w,x.t,x.ex].join(';')).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/csv'}));a.download='sozlar.csv';a.click()}}
+
+function quizV(v){const c=cards();
+ if(c.length<4){v.innerHTML=`<div class="empty"><div class="big">✅</div><b>Test uchun kamida 4 ta so'z kerak</b></div>`;return}
+ if(!quiz){const q=c[Math.random()*c.length|0];quiz={q,o:[q,...c.filter(x=>x!==q).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5),a:null}}
+ const {q,o,a}=quiz;
+ v.innerHTML=`<div class="panel"><div class="mu">Tarjimasini toping</div><div class="big" style="margin:8px 0">${esc(q.w)} <button id="sp" style="padding:4px 10px;font-size:16px">🔊</button></div>
+ ${o.map(x=>`<button class="opt ${a?(x===q?'ok':x===a?'bad':''):''}" data-i="${x.id}" ${a?'disabled':''}>${esc(x.t)}</button>`).join('')}
+ ${a?`<div class="row"><button class="p" id="nx">Keyingisi →</button></div>`:''}</div>`;
+ $('sp').onclick=()=>speak(q.w);
+ v.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const x=o.find(z=>z.id===b.dataset.i);quiz.a=x;
+  if(x===q)q.box=Math.min(5,q.box+1);else{q.wrong=(q.wrong||0)+1;q.box=0;q.due=Date.now()}bump();save();$('stats').innerHTML=statsH();quizV(v)});
+ if(a)$('nx').onclick=()=>{quiz=null;quizV(v)}}
+
+function decksV(v){
+ v.innerHTML=S.decks.map(d=>`<div class="dk ${d.id===S.cur?'on':''}" data-s="${d.id}"><span style="font-size:26px">${L(nat(d))[2]}→${L(d.lang)[2]}</span><div class="t">${L(d.lang)[1]} tili<small>${S.cards.filter(c=>c.deck===d.id).length} ta so'z</small></div><button data-x="${d.id}">🗑</button></div>`).join('')+`<button class="p" id="nw" style="width:100%;margin-top:6px">+ Yangi til juftligi</button>`;
+ v.onclick=e=>{const x=e.target.closest('[data-x]'),s=e.target.closest('[data-s]');
+  if(x){if(!confirm("Bu to'plam va uning so'zlari o'chiriladi. Davom etamizmi?"))return;const id=x.dataset.x;S.cards=S.cards.filter(c=>c.deck!==id);S.decks=S.decks.filter(d=>d.id!==id);if(S.cur===id)S.cur=S.decks[0]?.id||'';save();tab='study';render()}
+  else if(s){S.cur=s.dataset.s;save();tab='study';render()}};
+ $('nw').onclick=e=>{e.stopPropagation();onb={step:0};render()}}
+
+let hiddenAt=0;
+const b64=u=>btoa(String.fromCharCode(...u)),unb64=t=>Uint8Array.from(atob(t),c=>c.charCodeAt(0));
+async function hash(t){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){let h=0;for(const c of t)h=(h*31+c.charCodeAt(0))|0;return'x'+h}}
+function closeLock(){const l=$('lock');l.style.display='none';l.innerHTML=''}
+function pad(title,sub,onPin,extra,cancel){const el=$('lock');el.style.display='flex';let v='';
+ el.innerHTML=`<div class="lk"><div class="logo">🔒</div><h2>${title}</h2><p class="mu">${sub}</p><div class="pd" id="pd"></div>
+ <div class="kp">${[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k=>`<button data-k="${k}" ${k===''?'style="visibility:hidden"':''}>${k}</button>`).join('')}</div>${extra||''}${cancel?'<div><button class="gh" id="cx" style="margin-top:14px">Bekor qilish</button></div>':''}</div>`;
+ const dots=()=>{const d=$('pd');if(d)d.innerHTML=[0,1,2,3].map(i=>`<i class="${i<v.length?'on':''}"></i>`).join('')};dots();
+ if(cancel)$('cx').onclick=closeLock;
+ el.querySelectorAll('.kp button').forEach(b=>b.onclick=async()=>{const k=b.dataset.k;if(k==='⌫')v=v.slice(0,-1);else if(k!==''&&v.length<4)v+=k;dots();
+  if(v.length===4){const r=await onPin(v);v='';if(r==='bad'){const d=$('pd');if(d){d.classList.add('shake');setTimeout(()=>d.classList.remove('shake'),400)}}dots()}})}
+async function bioCheck(){try{await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),allowCredentials:[{type:'public-key',id:unb64(S.lock.bio),transports:['internal']}],userVerification:'required',timeout:60000}});return true}catch(e){return false}}
+async function bioOn(){if(!S.lock||!S.lock.pin)return alert("Avval PIN-kod o'rnating (Face ID ishlamasa PIN zaxira bo'ladi).");
+ if(!window.PublicKeyCredential)return alert("Bu brauzer biometrikani qo'llamaydi.");
+ try{const c=await navigator.credentials.create({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),rp:{name:"So'z kartalari"},user:{id:crypto.getRandomValues(new Uint8Array(16)),name:'user',displayName:S.name||'User'},pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required'},timeout:60000}});
+  S.lock.bio=b64(new Uint8Array(c.rawId));save();render()}
+ catch(e){alert("Biometrik yoqilmadi. U faqat https:// manzildagi saytda (masalan Vercel) va biometrikasi sozlangan qurilmada ishlaydi.")}}
+function showLock(){const bio=S.lock&&S.lock.bio;
+ pad('Qulflangan','PIN-kodni kiriting',async p=>{if(await hash(p+S.lock.salt)===S.lock.pin){closeLock();return}return'bad'},bio?'<button class="p" id="bio" style="margin-top:18px">🔓 Face ID / barmoq izi</button>':'');
+ if(bio){const go=async()=>{if(await bioCheck())closeLock()};$('bio').onclick=go;go()}}
+function initLock(){if(S.lock&&S.lock.pin)showLock()}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)hiddenAt=Date.now();else if(S.lock&&S.lock.pin&&hiddenAt&&Date.now()-hiddenAt>60000&&$('lock').style.display!=='flex')showLock()});
+function askPin(then){pad('Joriy PIN-kod','Tasdiqlash uchun kiriting',async p=>{if(await hash(p+S.lock.salt)===S.lock.pin){closeLock();then();return}return'bad'},'',true)}
+function setPin(){let first='';pad('Yangi PIN-kod','4 ta raqam kiriting',async p=>{first=p;
+ pad('PIN-kodni takrorlang','Yana bir marta kiriting',async q=>{if(q!==first)return'bad';const salt=Math.random().toString(36).slice(2);S.lock={pin:await hash(q+salt),salt,bio:(S.lock&&S.lock.bio)||null};save();closeLock();render()},'',true)},'',true)}
+function toggleTheme(){const r=document.documentElement,dk=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=dk?'light':'dark'}
+function setKey(){const k=prompt("Gemini API kalitingizni kiriting (faqat shu brauzerda saqlanadi). Bo'sh qoldirsangiz o'chadi:",localStorage.getItem('gk')||'');if(k===null)return;k.trim()?localStorage.setItem('gk',k.trim()):localStorage.removeItem('gk');render()}
+
+function profileV(v){const tot=S.cards.length,lr=S.cards.filter(x=>x.box>=4).length,st=(S.streak.last===day()||S.streak.last===yest())?S.streak.n:0,lk=S.lock&&S.lock.pin;
+ v.innerHTML=`<div class="panel" style="text-align:center"><div class="av">${S.name?esc(S.name[0].toUpperCase()):'👤'}</div>
+ <input id="nm" placeholder="Ismingiz" value="${esc(S.name||'')}" style="text-align:center;margin-bottom:8px"><div class="mu">${tot} ta so'z · ${lr} ta o'rganilgan · ${st} kun ketma-ket</div></div>
+ <div class="sec">Sozlamalar</div><div class="panel"><label>Kunlik maqsad (so'z)</label><div class="seg" id="goal">${[5,10,20,30].map(n=>`<button class="${S.goal===n?'on':''}" data-g="${n}">${n}</button>`).join('')}</div>
+ <div class="rw" id="r-pair"><span>🌍 Til juftliklari</span><span class="mu">›</span></div>
+ <div class="rw" id="r-th"><span>🌓 Mavzu (yorug' / qorong'i)</span><span class="mu">›</span></div>
+ <div class="rw" id="r-key"><span>🔑 Gemini kaliti</span><span class="mu">${localStorage.getItem('gk')?'kiritilgan ✓':'kiritilmagan'}</span></div></div>
+ <div class="sec">Qulf</div><div class="panel">
+ <div class="rw" id="r-pin"><span>🔢 PIN-kod</span><span class="mu">${lk?'yoqilgan ✓':"o'rnatish ›"}</span></div>
+ ${lk?`<div class="rw" id="r-pin2"><span>✏️ PIN-kodni o'zgartirish</span><span class="mu">›</span></div><div class="rw" id="r-pin3"><span class="dng">PIN-kodni o'chirish</span><span></span></div>`:''}
+ <div class="rw" id="r-bio"><span>🙂 Face ID / barmoq izi<br><small class="mu">${lk?'Ilova ochilganda biometrik bilan kirish':'Avval PIN-kod kerak'}</small></span><button class="sw ${lk&&S.lock.bio?'on':''}" id="sw"></button></div></div>
+ <p class="mu" style="font-size:12px;margin:8px 4px">Ilova yopilib ochilganda yoki 1 daqiqadan ko'p fonda tursa, qulflanadi.</p>
+ <div class="sec">Ma'lumotlar</div><div class="panel"><div class="rw" id="r-rs"><span class="dng">🗑 Hamma ma'lumotni o'chirish</span><span></span></div></div>`;
+ $('nm').onchange=e=>{S.name=e.target.value.trim();save();render()};
+ $('goal').onclick=e=>{const g=e.target.dataset.g;if(g){S.goal=+g;save();render()}};
+ $('r-pair').onclick=()=>{tab='decks';render()};$('r-th').onclick=toggleTheme;$('r-key').onclick=setKey;
+ $('r-pin').onclick=()=>{if(lk)return;setPin()};
+ if(lk){$('r-pin2').onclick=()=>askPin(setPin);$('r-pin3').onclick=()=>askPin(()=>{S.lock=null;save();render()})}
+ $('r-bio').onclick=()=>{if(lk&&S.lock.bio){S.lock.bio=null;save();render()}else bioOn()};
+ $('r-rs').onclick=()=>{if(!confirm("Barcha so'zlar, to'plamlar va qulf o'chiriladi. Davom etamizmi?"))return;try{localStorage.removeItem('fc1')}catch(e){}location.reload()}}
+
+render();initLock();
+</script></body></html>
