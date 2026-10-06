@@ -147,7 +147,7 @@ function addV(v){const d=cur();
  <div class="mu" id="msg" style="margin-bottom:10px;min-height:20px"></div><button class="p" id="sv" style="width:100%">Saqlash</button></div>`;
  const msg=t=>$('msg').textContent=t;
  $('ai').onclick=async()=>{const w=$('w').value.trim();if(!w)return msg("Avval so'zni yozing");
-  const key=localStorage.getItem('gk');if(!key)return msg("Avval yuqoridagi 🔑 tugmasi bilan Gemini kalitini kiriting");
+  const key=localStorage.getItem('gk');if(!key)return msg("Avval Profil → Gemini kaliti bo'limida kalitni kiriting");
   $('ai').disabled=true;msg("O'ylayapman...");
   try{const N=L(nat(d))[1],T=L(d.lang)[1];
    const prompt=`Foydalanuvchi ${N} tilini biladi va ${T} tilini o'rganyapti. U shu so'z yoki iborani yozdi: "${w}". U ${N} yoki ${T} tilida bo'lishi mumkin. Javobda: w = shu so'zning ${T} tilidagi varianti, t = ${N} tilidagi tarjimasi, ex = ${T} tilida qisqa misol gap va oxirida qavs ichida uning ${N} tilidagi tarjimasi. Faqat JSON qaytar: {"w":"...","t":"...","ex":"..."}`;
